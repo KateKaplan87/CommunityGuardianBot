@@ -1,49 +1,26 @@
 import discord
 from discord.ext import commands
-
 import os
+
+TOKEN = os.getenv("DISCORD_TOKEN")
+PREFIX = os.getenv("BOT_PREFIX", "!")
 
 intents = discord.Intents.default()
 intents.messages = True
 intents.guilds = True
-intents.message_content = True  # wichtig für Slash-Befehle
-
-from dotenv import load_dotenv
-
-load_dotenv()
-
-
-TOKEN = os.getenv("DISCORD_TOKEN")
-BOT_PREFIX = os.getenv("BOT_PREFIX", "!")
-
+intents.message_content = True  # wichtig für Bots ab API v10
 
 bot = commands.Bot(command_prefix=PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
-    print(f"✅ Bot ist online: {bot.user} (ID: {bot.user.id})")
-
-intents = discord.Intents.default()
-intents.messages = True
-intents.guilds = True
-intents.message_content = True
-
-bot = commands.Bot(command_prefix=BOT_PREFIX, intents=intents)
-
-@bot.event
-async def on_ready():
-    print(f"✅ {bot.user} ist jetzt online und bereit!")
-
+    print(f"✅ Bot ist online als {bot.user}")
 
 @bot.command()
 async def ping(ctx):
     await ctx.send("🏓 Pong!")
 
-
-def run_bot():
-
 def run_discord_bot():
-
     if not TOKEN:
         print("❌ Kein Token gefunden. Bitte DISCORD_TOKEN setzen.")
         return
