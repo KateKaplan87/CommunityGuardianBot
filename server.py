@@ -12,8 +12,9 @@ app = Flask('')
 def home():
     return "CommunityGuardianBot is running!"
 
-bot.run_bot():
-    bot.run_discord_bot()  # startet den Discord-Bot aus bot.py
+def run_discord_bot():
+    if TOKEN:
+       bot.run(TOKEN)
 
 if __name__ == "__main__":
     threading.Thread(target=run_bot).start()  # startet den Bot parallel
