@@ -17,7 +17,7 @@ def run_discord_bot():
        bot.run(TOKEN)
 
 if __name__ == "__main__":
-    threading.Thread(target=run_bot).start()  # startet den Bot parallel
+    threading.Thread(target=run_discord_bot).start()  # startet den Bot parallel
     app.run(host="0.0.0.0", port=8080)        # hält Railway aktiv
 
 @app.route('/')
