@@ -24,6 +24,6 @@ async def ping(ctx):
 
 def run_discord_bot():
     if TOKEN:
-        bot.run(TOKEN)
+        bot.run_discord_bot(TOKEN)
     else:
         print("❌ Kein Token gefunden. Bitte DISCORD_TOKEN setzen.")
