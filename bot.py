@@ -1,6 +1,7 @@
+import os
 import discord
 from discord.ext import commands
-import os
+from dotenv import load_dotenv
 
 TOKEN = os.getenv("DISCORD_TOKEN")
 PREFIX = os.getenv("BOT_PREFIX", "!")
@@ -10,7 +11,7 @@ intents.messages = True
 intents.guilds = True
 intents.message_content = True  # wichtig für Bots ab API v10
 
-bot = commands.Bot(command_prefix=PREFIX, intents=intents)
+bot = commands.Bot(command_prefix=BOT_PREFIX, intents=intents)
 
 @bot.event
 async def on_ready():
@@ -21,7 +22,7 @@ async def ping(ctx):
     await ctx.send("🏓 Pong!")
 
 def run_discord_bot():
-    if not TOKEN:
+    if TOKEN:
+        bot.run(TOKEN)
+        else:
         print("❌ Kein Token gefunden. Bitte DISCORD_TOKEN setzen.")
-        return
-    bot.run(TOKEN)
