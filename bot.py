@@ -7,7 +7,7 @@ intents = discord.Intents.default()
 intents.messages = True
 intents.guilds = True
 intents.message_content = True  # wichtig für Slash-Befehle
-=======
+
 from dotenv import load_dotenv
 
 load_dotenv()
