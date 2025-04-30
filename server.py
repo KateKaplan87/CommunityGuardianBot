@@ -1,7 +1,7 @@
 from flask import Flask
 import threading
 
-import bot  # das ist deine bot.py
+#import bot  # das ist deine bot.py
  
 
 
